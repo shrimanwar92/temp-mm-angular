@@ -1,0 +1,59 @@
+<!--
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <p class="network-name">micropayments@0.0.1.bna</p>
+        <p class="navbar-brand">angular-app</p>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="dropdown active">
+            <a class="dropdown-toggle" data-toggle="dropdown">Assets</a>
+            <ul class="dropdown-menu scrollable-menu">
+              
+              <li><a [routerLink]="['/Loan']">Loan</a></li>
+              
+            </ul>
+        </li>
+        <li class="dropdown active">
+          <a class="dropdown-toggle" data-toggle="dropdown">Participants</a>
+          <ul class="dropdown-menu scrollable-menu">
+            
+            <li><a [routerLink]="['/org.acme.loan.BorrowerRequest']">BorrowerRequest</a></li>
+            
+            <li><a [routerLink]="['/Borrower']">Borrower</a></li>
+            
+            <li><a [routerLink]="['/Lender']">Lender</a></li>
+            
+          </ul>
+      </li>
+      <li class="dropdown active">
+        <a class="dropdown-toggle" data-toggle="dropdown">Transactions</a>
+        <ul class="dropdown-menu scrollable-menu">
+          
+          <li><a [routerLink]="['/CreditLoan']">CreditLoan</a></li>
+          
+          <li><a [routerLink]="['/RepayLoan']">RepayLoan</a></li>
+          
+          <li><a [routerLink]="['/RequestLoan']">RequestLoan</a></li>
+          
+        </ul>
+    </li>
+      </ul>
+    </div>
+  </nav>
+
+  <a href="http://localhost:3000/auth/google">Sign in with google</a>
+  
+  <router-outlet></router-outlet>
