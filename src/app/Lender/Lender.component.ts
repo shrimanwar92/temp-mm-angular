@@ -31,68 +31,23 @@ export class LenderComponent implements OnInit {
   private currentId;
 	private errorMessage;
 
+  accountBalance = new FormControl("", Validators.required);
+  userId = new FormControl("", Validators.required);
+  firstname = new FormControl("", Validators.required);
+  lastName = new FormControl("", Validators.required);
+  email = new FormControl("", Validators.required);
+  aadhar = new FormControl("", Validators.required);
+  isLender = new FormControl("", Validators.required);
   
-      
-          accountBalance = new FormControl("", Validators.required);
-        
-  
-      
-          userId = new FormControl("", Validators.required);
-        
-  
-      
-          firstname = new FormControl("", Validators.required);
-        
-  
-      
-          lastName = new FormControl("", Validators.required);
-        
-  
-      
-          email = new FormControl("", Validators.required);
-        
-  
-      
-          aadhar = new FormControl("", Validators.required);
-        
-  
-      
-          isLender = new FormControl("", Validators.required);
-        
-  
-
-
   constructor(private serviceLender:LenderService, fb: FormBuilder) {
     this.myForm = fb.group({
-    
-        
-          accountBalance:this.accountBalance,
-        
-    
-        
-          userId:this.userId,
-        
-    
-        
-          firstname:this.firstname,
-        
-    
-        
-          lastName:this.lastName,
-        
-    
-        
-          email:this.email,
-        
-    
-        
-          aadhar:this.aadhar,
-        
-    
-        
-          isLender:this.isLender
-        
-    
+      accountBalance:this.accountBalance,
+      userId:this.userId,
+      firstname:this.firstname,
+      lastName:this.lastName,
+      email:this.email,
+      aadhar:this.aadhar,
+      isLender:this.isLender
     });
   };
 
@@ -152,67 +107,23 @@ export class LenderComponent implements OnInit {
   addParticipant(form: any): Promise<any> {
     this.participant = {
       $class: "org.acme.loan.Lender",
-      
-        
-          "accountBalance":this.accountBalance.value,
-        
-      
-        
-          "userId":this.userId.value,
-        
-      
-        
-          "firstname":this.firstname.value,
-        
-      
-        
-          "lastName":this.lastName.value,
-        
-      
-        
-          "email":this.email.value,
-        
-      
-        
-          "aadhar":this.aadhar.value,
-        
-      
-        
-          "isLender":this.isLender.value
-        
-      
+      "accountBalance":this.accountBalance.value,
+      "userId":this.userId.value,
+      "firstname":this.firstname.value,
+      "lastName":this.lastName.value,
+      "email":this.email.value,
+      "aadhar":this.aadhar.value,
+      "isLender":this.isLender.value
     };
 
     this.myForm.setValue({
-      
-        
-          "accountBalance":null,
-        
-      
-        
-          "userId":null,
-        
-      
-        
-          "firstname":null,
-        
-      
-        
-          "lastName":null,
-        
-      
-        
-          "email":null,
-        
-      
-        
-          "aadhar":null,
-        
-      
-        
-          "isLender":null
-        
-      
+      "accountBalance":null,
+      "userId":null,
+      "firstname":null,
+      "lastName":null,
+      "email":null,
+      "aadhar":null,
+      "isLender":null
     });
 
     return this.serviceLender.addParticipant(this.participant)
@@ -220,35 +131,13 @@ export class LenderComponent implements OnInit {
     .then(() => {
 			this.errorMessage = null;
       this.myForm.setValue({
-      
-        
           "accountBalance":null,
-        
-      
-        
           "userId":null,
-        
-      
-        
           "firstname":null,
-        
-      
-        
           "lastName":null,
-        
-      
-        
           "email":null,
-        
-      
-        
           "aadhar":null,
-        
-      
-        
-          "isLender":null 
-        
-      
+          "isLender":null
       });
     })
     .catch((error) => {
@@ -265,47 +154,12 @@ export class LenderComponent implements OnInit {
    updateParticipant(form: any): Promise<any> {
     this.participant = {
       $class: "org.acme.loan.Lender",
-      
-        
-          
-            "accountBalance":this.accountBalance.value,
-          
-        
-    
-        
-          
-        
-    
-        
-          
-            "firstname":this.firstname.value,
-          
-        
-    
-        
-          
-            "lastName":this.lastName.value,
-          
-        
-    
-        
-          
-            "email":this.email.value,
-          
-        
-    
-        
-          
-            "aadhar":this.aadhar.value,
-          
-        
-    
-        
-          
-            "isLender":this.isLender.value
-          
-        
-    
+      "accountBalance":this.accountBalance.value,
+      "firstname":this.firstname.value,
+      "lastName":this.lastName.value,
+      "email":this.email.value,
+      "aadhar":this.aadhar.value,
+      "isLender":this.isLender.value
     };
 
     return this.serviceLender.updateParticipant(form.get("userId").value,this.participant)
@@ -358,97 +212,71 @@ export class LenderComponent implements OnInit {
     .then((result) => {
 			this.errorMessage = null;
       let formObject = {
-        
-          
-            "accountBalance":null,
-          
-        
-          
-            "userId":null,
-          
-        
-          
-            "firstname":null,
-          
-        
-          
-            "lastName":null,
-          
-        
-          
-            "email":null,
-          
-        
-          
-            "aadhar":null,
-          
-        
-          
-            "isLender":null 
-          
-        
+        "accountBalance":null,
+        "userId":null,
+        "firstname":null,
+        "lastName":null,
+        "email":null,
+        "aadhar":null,
+        "isLender":null
       };
-
-
-
       
-        if(result.accountBalance){
-          
-            formObject.accountBalance = result.accountBalance;
-          
-        }else{
-          formObject.accountBalance = null;
-        }
+      if(result.accountBalance){
+        
+          formObject.accountBalance = result.accountBalance;
+        
+      }else{
+        formObject.accountBalance = null;
+      }
+    
+      if(result.userId){
+        
+          formObject.userId = result.userId;
+        
+      }else{
+        formObject.userId = null;
+      }
+    
+      if(result.firstname){
+        
+          formObject.firstname = result.firstname;
+        
+      }else{
+        formObject.firstname = null;
+      }
+    
+      if(result.lastName){
+        
+          formObject.lastName = result.lastName;
+        
+      }else{
+        formObject.lastName = null;
+      }
+    
+      if(result.email){
+        
+          formObject.email = result.email;
+        
+      }else{
+        formObject.email = null;
+      }
+    
+      if(result.aadhar){
+        
+          formObject.aadhar = result.aadhar;
+        
+      }else{
+        formObject.aadhar = null;
+      }
+    
+      if(result.isLender){
+        
+          formObject.isLender = result.isLender;
+        
+      }else{
+        formObject.isLender = null;
+      }
       
-        if(result.userId){
-          
-            formObject.userId = result.userId;
-          
-        }else{
-          formObject.userId = null;
-        }
-      
-        if(result.firstname){
-          
-            formObject.firstname = result.firstname;
-          
-        }else{
-          formObject.firstname = null;
-        }
-      
-        if(result.lastName){
-          
-            formObject.lastName = result.lastName;
-          
-        }else{
-          formObject.lastName = null;
-        }
-      
-        if(result.email){
-          
-            formObject.email = result.email;
-          
-        }else{
-          formObject.email = null;
-        }
-      
-        if(result.aadhar){
-          
-            formObject.aadhar = result.aadhar;
-          
-        }else{
-          formObject.aadhar = null;
-        }
-      
-        if(result.isLender){
-          
-            formObject.isLender = result.isLender;
-          
-        }else{
-          formObject.isLender = null;
-        }
-      
-
       this.myForm.setValue(formObject);
 
     })
@@ -468,36 +296,14 @@ export class LenderComponent implements OnInit {
 
   resetForm(): void{
     this.myForm.setValue({
-      
-        
-          "accountBalance":null,
-        
-      
-        
-          "userId":null,
-        
-      
-        
-          "firstname":null,
-        
-      
-        
-          "lastName":null,
-        
-      
-        
-          "email":null,
-        
-      
-        
-          "aadhar":null,
-        
-      
-        
-          "isLender":null 
-        
-      
-      });
+        "accountBalance":null,
+        "userId":null,
+        "firstname":null,
+        "lastName":null,
+        "email":null,
+        "aadhar":null,        
+        "isLender":null
+    });
   }
 
 }
